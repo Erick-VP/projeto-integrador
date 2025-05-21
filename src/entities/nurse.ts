@@ -10,8 +10,7 @@ export class Enfermeiro extends Funcionario {
         this.coren = coren;
     }
 
-    public realizarTriagem(p: Paciente, prioridade: Prioridade): void {
-        const triagem = new Triagem(0, 0, 0, [], new Date(), p);
-        triagem.definirClassificacao(prioridade)
+    public realizarTriagem(p: Paciente, prioridade: Prioridade): Triagem {
+        return new Triagem(p, prioridade, 0, 0, [], 0);
     }
 }
