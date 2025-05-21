@@ -1,49 +1,6 @@
 import { Paciente } from "../entities/patient";
-interface Fila {
+export interface Fila {
     adicionar(p : Paciente) : void;
     remover() : Paciente;
     estaVazia() : boolean;
-}
-
-export class FilaSemTempo implements Fila {
-    fila: Paciente[] = [];
-    adicionar(p: Paciente): void {
-        this.fila.push(p);
-    }
-    remover(): Paciente {
-        if (this.estaVazia()) {
-            throw new Error("Fila vazia");
-        }
-        return this.fila.shift()!;
-    }
-    estaVazia(): boolean {
-        return this.fila.length === 0;
-    }
-    tamanho(): number {
-        return this.fila.length;
-    }
-    listar(): Paciente[] {
-        return this.fila;
-    }
-}
-export class FilaComTempo implements Fila {
-    fila: Paciente[] = [];
-    adicionar(p: Paciente): void {
-        this.fila.push(p);
-    }
-    remover(): Paciente {
-        if (this.estaVazia()) {
-            throw new Error("Fila vazia");
-        }
-        return this.fila.shift()!;
-    }
-    estaVazia(): boolean {
-        return this.fila.length === 0;
-    }
-    tamanho(): number {
-        return this.fila.length;
-    }
-    listar(): Paciente[] {
-        return this.fila;
-    }
 }
