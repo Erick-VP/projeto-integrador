@@ -1,6 +1,7 @@
-import { Paciente } from "../entities/patient";
+import { Triagem } from "../entities/triage";
+
 export interface Fila {
-    adicionar(p : Paciente) : void;
-    remover() : Paciente;
+    adicionar(t : Triagem) : void;
+    remover() : Triagem;
     estaVazia() : boolean;
 }

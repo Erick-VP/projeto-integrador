@@ -1,12 +1,12 @@
 import { Fila } from "./Fila";
-import { Paciente } from "../entities/patient";
+import { Triagem } from "../entities/triage";
 
 export class FilaComTempo implements Fila {
-    fila: Paciente[] = [];
-    adicionar(p: Paciente): void {
-        this.fila.push(p);
+    fila: Triagem[] = [];
+    adicionar(t: Triagem): void {
+        this.fila.push(t);
     }
-    remover(): Paciente {
+    remover(): Triagem {
         if (this.estaVazia()) {
             throw new Error("Fila vazia");
         }
@@ -18,7 +18,7 @@ export class FilaComTempo implements Fila {
     tamanho(): number {
         return this.fila.length;
     }
-    listar(): Paciente[] {
+    listar(): Triagem[] {
         return this.fila;
     }
 }
