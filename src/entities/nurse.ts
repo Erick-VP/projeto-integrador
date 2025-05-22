@@ -2,6 +2,7 @@ import { Prioridade } from "../priorities/priority";
 import { Funcionario } from "./functionary";
 import { Triagem } from "./triage";
 import { Paciente } from "./patient";
+import { GerenciadorTriagem } from "../controllers/GerenciadorTriagem";
 
 export class Enfermeiro extends Funcionario {
     coren: string;
@@ -11,6 +12,17 @@ export class Enfermeiro extends Funcionario {
     }
 
     public realizarTriagem(p: Paciente, prioridade: Prioridade): Triagem {
-        return new Triagem(p, prioridade, 0, 0, [], 0);
+        return new Triagem(p, prioridade, 0, 0, [], 0); //modificar
+    }
+
+    public chamarProximoPaciente(gt: GerenciadorTriagem): Paciente | null {
+        const paciente = gt.chamarProximoPaciente();
+        if (paciente) {
+            console.log(`Chamando paciente: ${paciente.nome}`);
+            return paciente;
+        } else {
+            console.log("Nenhum paciente na fila.");
+            return null;
+        }
     }
 }
