@@ -4,13 +4,22 @@ import { Fila } from "./Fila";
 export class FilaSemTempo implements Fila {
     fila: Triagem[] = [];
     adicionar(t: Triagem): void {
-        this.fila.push(t);
+        if (this.fila.length == 0) {
+            this.fila.push(t)
+            return
+        }
+        let pos = 0
+        for(let pacient of this.fila){
+            if(t.prioridade <= pacient.prioridade){
+            pos+=1
+        }
+        }
+        this.fila.splice(pos,0,t)
     }
     remover(): Triagem {
-        if (this.estaVazia()) {
-            throw new Error("Fila vazia");
-        }
-        return this.fila.shift()!;
+        const elemRetirado = this.fila[0]
+        this.fila.splice(0,1)
+        return elemRetirado
     }
     estaVazia(): boolean {
         return this.fila.length === 0;
