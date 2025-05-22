@@ -1,7 +1,7 @@
 export enum Prioridade {
-    "Azul" = 0,
-    "Verde" = 1,
-    "Amarelo" = 2,
-    "Laranja" = 3, 
-    "Vermelho" = 4,
+    "Azul" = 1,
+    "Verde" = 2,
+    "Amarelo" = 3,
+    "Laranja" = 4, 
+    "Vermelho" = 5,
 }
