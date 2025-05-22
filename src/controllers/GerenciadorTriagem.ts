@@ -29,25 +29,11 @@ export class GerenciadorTriagem {
     }
 
     public confirmarPresenca(paciente: Paciente): void {
-        this.tentativasChamada.delete(paciente.id);
-        const index = this.filaAuxiliar.indexOf(paciente);
-        if (index >= 0) {
-            this.filaAuxiliar.splice(index, 1);
-        }
-        console.log(`Presença confirmada: ${paciente.nome}.`);
-    }
+
 
     // 
     public registrarAusencia(paciente: Paciente): void {
-        const remover = (fila: Paciente[]) => {
-            const index = fila.indexOf(paciente);
-            if (index >= 0) {
-                fila.splice(index, 1);
-            }
-            remover(this.filaNormal)
-            remover(this.filaPrioritaria)
-            this.filaAuxiliar.push(paciente);
-        };
+
     }
 
 
