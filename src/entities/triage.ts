@@ -2,6 +2,8 @@ import { Prioridade } from "../priorities/priority";
 import { Paciente } from "./patient";
 
 export class Triagem {
+    public readonly dataHora = Date.now() 
+    
     constructor(
         public readonly paciente: Paciente,
         public readonly prioridade: Prioridade,
@@ -11,6 +13,5 @@ export class Triagem {
         sintomas: string[];
         temperatura: number;
         },
-        public readonly dataHora: Date = new Date()
     ) {}
 }
