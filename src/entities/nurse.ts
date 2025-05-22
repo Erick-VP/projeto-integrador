@@ -3,16 +3,13 @@ import { Funcionario } from "./functionary";
 import { Triagem } from "./triage";
 import { Paciente } from "./patient";
 import { GerenciadorTriagem } from "../controllers/GerenciadorTriagem";
+import { GerenciadorAtendimento } from "../controllers/GerenciadorAtendimento";
 
 export class Enfermeiro extends Funcionario {
     coren: string;
     constructor(id: number, nome: string, coren: string) {
         super(id, nome);
         this.coren = coren;
-    }
-
-    public realizarTriagem(p: Paciente, prioridade: Prioridade): Triagem {
-        return new Triagem(p, prioridade, 0, 0, [], 0); //modificar
     }
 
     public chamarProximoPaciente(gt: GerenciadorTriagem): Paciente | null {
@@ -25,4 +22,16 @@ export class Enfermeiro extends Funcionario {
             return null;
         }
     }
+
+    public realizarTriagem(paciente: Paciente, prioridade: Prioridade, pressao: number, saturacao: number, sintomas: string[], temperatura: number): Triagem {
+        console.log(`Enfermeiro: Realizando triagem de ${paciente.nome}`);
+        return new Triagem(paciente, prioridade, {pressao, saturacao, sintomas, temperatura});
+    }
+
+    public encaminharParaAtendimento(triagem: Triagem, ga: GerenciadorAtendimento): void {
+    ga.adicionarTriagem(triagem);
+    console.log(`Enfermeiro: Triagem de ${triagem.paciente.nome} enviada para atendimento.`);
+    }
+
+
 }

@@ -28,13 +28,13 @@ export class GerenciadorTriagem {
         // pode ser melhorado e precisa colocar contador
     }
 
-    public confirmarPresenca(paciente: Paciente): void {
+    // public confirmarPresenca(paciente: Paciente): void {
 
 
-    // 
-    public registrarAusencia(paciente: Paciente): void {
+    // // 
+    // public registrarAusencia(paciente: Paciente): void {
 
-    }
+    // }
 
 
     //listagem de pacientes

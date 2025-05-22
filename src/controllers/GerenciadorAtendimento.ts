@@ -4,7 +4,6 @@ import { Prioridade } from "../priorities/priority";
 export class GerenciadorAtendimento {
     filaComTempo: Triagem[] = [];
     filaSemTempo: Triagem[] = [];
-    limiteMinimo: number = 30; // em minutos
     limites: Map<Prioridade, number> = new Map([
         [Prioridade.Vermelho, 0],
         [Prioridade.Laranja, 10],
@@ -25,8 +24,9 @@ export class GerenciadorAtendimento {
     const agora = Date.now();
     }
 
+
     public chamarProximaTriagem(): Triagem | null {
-        this.verificarETrocarFila();
+        // this.verificarETrocarFila();
         if (this.filaSemTempo.length > 0) {
             return this.filaSemTempo.shift() || null;
         } else if (this.filaComTempo.length > 0) {

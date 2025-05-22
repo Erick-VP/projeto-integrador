@@ -11,7 +11,7 @@ export class Medico extends Funcionario {
     public chamarProximaTriagem(ga: GerenciadorAtendimento): void {
         const triagem = ga.chamarProximaTriagem();
         if (triagem) {
-            console.log(`Médico ${this.nome} está chamando a triagem com prioridade ${triagem.prioridade}`);
+            console.log(`Médico ${this.nome} está chamando o paciente ${triagem.paciente.nome} para atendimento.`);
         } else {
             console.log(`Não há triagens disponíveis para chamar.`);
         }

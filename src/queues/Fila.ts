@@ -5,3 +5,9 @@ export interface Fila {
     remover() : Triagem;
     estaVazia() : boolean;
 }
+// export interface Fila <T> {
+//     adicionar(t: T): void;
+//     remover(): T | undefined;
+//     estaVazia(): boolean;
+// }
+
