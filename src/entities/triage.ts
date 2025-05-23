@@ -9,7 +9,7 @@ export class Triagem {
         public readonly detalhes: {
         pressao: number;
         saturacao: number;
-        sintomas: string[];
+        peso: number;
         temperatura: number;
         },
     ) {

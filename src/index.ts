@@ -31,13 +31,13 @@ gt.listarFilas();
 
 const chamando1 = e.chamarProximoPaciente(gt);
 if (chamando1) {
-    const triagem = e.realizarTriagem(chamando1, Prioridade.Amarelo, 120, 98, ["dor de cabeça"], 37.5);
+    const triagem = e.realizarTriagem(chamando1, Prioridade.Amarelo, 120, 98, 50, 37.5);
     e.encaminharParaAtendimento(triagem, ga);
 }
 
 const chamando3 = e.chamarProximoPaciente(gt);
 if (chamando3) {
-    const triagem = e.realizarTriagem(chamando3, Prioridade.Verde, 130, 90, ["dificuldade para respirar"], 38.0);
+    const triagem = e.realizarTriagem(chamando3, Prioridade.Verde, 130, 90, 70, 38.0);
     e.encaminharParaAtendimento(triagem, ga);
 }
 

@@ -21,7 +21,7 @@ export class Recepcionista extends Funcionario {
             const tri = new Triagem(p, Prioridade.Vermelho, {
                 pressao: 0,
                 saturacao: 0,
-                sintomas: ["dor no peito", "dificuldade para respirar"],
+                peso: 0,
                 temperatura: 0
             });
             ga.adicionarTriagem(tri); //adiciona para atendimento

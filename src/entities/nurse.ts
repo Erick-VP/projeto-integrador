@@ -23,9 +23,9 @@ export class Enfermeiro extends Funcionario {
         }
     }
 
-    public realizarTriagem(paciente: Paciente, prioridade: Prioridade, pressao: number, saturacao: number, sintomas: string[], temperatura: number): Triagem {
+    public realizarTriagem(paciente: Paciente, prioridade: Prioridade, pressao: number, saturacao: number, peso: number, temperatura: number): Triagem {
         console.log(`Enfermeiro: Realizando triagem de ${paciente.nome}`);
-        return new Triagem(paciente, prioridade, {pressao, saturacao, sintomas, temperatura});
+        return new Triagem(paciente, prioridade, {pressao, saturacao, peso, temperatura});
     }
 
     public encaminharParaAtendimento(triagem: Triagem, ga: GerenciadorAtendimento): void {

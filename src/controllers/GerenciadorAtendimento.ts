@@ -51,9 +51,25 @@ export class GerenciadorAtendimento {
 }
     public listarTriagens(): void {
         console.log("=== Fila Sem Tempo ===");
-        console.table(this.filaSemTempo.listar());
+        console.table(this.filaSemTempo.listar().map((triagem) => ({
+            nome: triagem.paciente.nome,
+            prioridade: triagem.prioridade,
+            dataHora: triagem.dataHora,
+            pressao: triagem.detalhes.pressao,
+            saturacao: triagem.detalhes.saturacao,
+            peso: triagem.detalhes.peso,
+            temperatura: triagem.detalhes.temperatura,
+        })));
         
         console.log("=== Fila Com Tempo ===");
-        console.table(this.filaComTempo.listar());
+        console.table(this.filaComTempo.listar().map((triagem) => ({
+            nome: triagem.paciente.nome,
+            prioridade: triagem.prioridade,
+            dataHora: triagem.dataHora,
+            pressao: triagem.detalhes.pressao,
+            saturacao: triagem.detalhes.saturacao,
+            peso: triagem.detalhes.peso,
+            temperatura: triagem.detalhes.temperatura,
+            })));
     }
 }
