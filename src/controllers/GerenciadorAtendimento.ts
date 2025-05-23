@@ -4,9 +4,9 @@ import { FilaComTempo } from "../queues/FilaComTempo";
 import { FilaSemTempo } from "../queues/FilaSemtempo";
 
 export class GerenciadorAtendimento {
-    filaComTempo = new FilaComTempo();
-    filaSemTempo = new FilaSemTempo();
-    limites: Map<Prioridade, number> = new Map([
+    private filaComTempo = new FilaComTempo();
+    private filaSemTempo = new FilaSemTempo();
+    private limites: Map<Prioridade, number> = new Map([
         [Prioridade.Vermelho, 0],
         [Prioridade.Laranja, 10],
         [Prioridade.Amarelo, 60],

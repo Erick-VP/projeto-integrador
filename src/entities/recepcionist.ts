@@ -6,7 +6,7 @@ import { Paciente } from './patient';
 import { Triagem } from './triage';
 
 export class Recepcionista extends Funcionario {
-    matricula: string;
+    public readonly matricula: string;
     constructor(id: number, nome: string, matricula: string) {
         super(id, nome);
         this.matricula = matricula;

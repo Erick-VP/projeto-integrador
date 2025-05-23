@@ -2,7 +2,7 @@ import { GerenciadorAtendimento } from '../controllers/GerenciadorAtendimento';
 import { Funcionario } from './functionary';
 
 export class Medico extends Funcionario {
-    crm: string;
+    readonly crm: string;
     constructor(id: number, nome: string, crm: string) {
         super(id, nome);
         this.crm = crm;

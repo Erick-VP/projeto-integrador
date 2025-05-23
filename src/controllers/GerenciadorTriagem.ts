@@ -22,16 +22,7 @@ export class GerenciadorTriagem {
         return null;
     }
 
-    // public confirmarPresenca(paciente: Paciente): void {
 
-
-    // // 
-    // public registrarAusencia(paciente: Paciente): void {
-
-    // }
-
-
-    //listagem de pacientes
 public listarFilas(): void {
     console.log("=== Fila Prioritária ===");
     console.table(this.filaPrioritaria.listar());

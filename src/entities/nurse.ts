@@ -6,7 +6,7 @@ import { GerenciadorTriagem } from "../controllers/GerenciadorTriagem";
 import { GerenciadorAtendimento } from "../controllers/GerenciadorAtendimento";
 
 export class Enfermeiro extends Funcionario {
-    coren: string;
+    readonly coren: string;
     constructor(id: number, nome: string, coren: string) {
         super(id, nome);
         this.coren = coren;

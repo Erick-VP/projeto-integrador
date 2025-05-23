@@ -1,9 +1,9 @@
 export class Paciente {
-    id: number;
-    nome: string;
-    cpf: string;
-    prioridadeLegal: boolean;
-    casoEmergencial: boolean;
+    public readonly id: number;
+    public readonly nome: string;
+    public readonly cpf: string;
+    public readonly prioridadeLegal: boolean;
+    public readonly casoEmergencial: boolean;
     constructor(id: number, nome: string, cpf: string, prioridadeLegal: boolean, casoEmergencial: boolean) {
         this.id = id;
         this.nome = nome;
