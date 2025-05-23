@@ -10,7 +10,7 @@ import { Prioridade } from "./priorities/priority";
 const gt = new GerenciadorTriagem();
 const ga = new GerenciadorAtendimento();
 
-const p1 = new Paciente(1, "Ana", "12345678900", false, false);
+const p1 = new Paciente(1, "Ana", "12345678900", true, false);
 const p2 = new Paciente(2, "Pedro", "98765432100", false, true);
 const p3 = new Paciente(3, "Maria", "12312312300", false, false);
 
