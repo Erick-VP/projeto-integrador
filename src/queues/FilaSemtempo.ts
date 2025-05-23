@@ -1,7 +1,7 @@
 import { Triagem } from "../entities/triage";
 import { Fila } from "./Fila";
 
-export class FilaSemTempo implements Fila {
+export class FilaSemTempo implements Fila<Triagem> {
     fila: Triagem[] = [];
     adicionar(t: Triagem): void {
         if (this.fila.length == 0) {

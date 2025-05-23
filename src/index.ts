@@ -9,18 +9,41 @@ import { Prioridade } from "./priorities/priority";
 
 const gt = new GerenciadorTriagem();
 const ga = new GerenciadorAtendimento();
+
+const p1 = new Paciente(1, "Ana", "12345678900", false, false);
+const p2 = new Paciente(2, "Pedro", "98765432100", false, true);
+const p3 = new Paciente(3, "Maria", "12312312300", false, false);
+
 const r = new Recepcionista(1, "João", "12345");
 const e = new Enfermeiro(2, "Maria", "67890");
 const m = new Medico(3, "Carlos", "54321");
 
-const p1 = new Paciente(1, "Ana", "12345678900", false, false);
+
 
 r.cadastrarPaciente(p1);
+r.cadastrarPaciente(p2);
+r.cadastrarPaciente(p3);
 r.encaminhar(p1, gt, ga);
+r.encaminhar(p2, gt, ga);
+r.encaminhar(p3, gt, ga);
 
-const chamando = e.chamarProximoPaciente(gt);
-if (chamando) {
-    const triagem = e.realizarTriagem(chamando, Prioridade.Amarelo, 120, 98, ["dor de cabeça"], 37.5);
+gt.listarFilas();
+
+const chamando1 = e.chamarProximoPaciente(gt);
+if (chamando1) {
+    const triagem = e.realizarTriagem(chamando1, Prioridade.Amarelo, 120, 98, ["dor de cabeça"], 37.5);
     e.encaminharParaAtendimento(triagem, ga);
 }
+
+const chamando3 = e.chamarProximoPaciente(gt);
+if (chamando3) {
+    const triagem = e.realizarTriagem(chamando3, Prioridade.Verde, 130, 90, ["dificuldade para respirar"], 38.0);
+    e.encaminharParaAtendimento(triagem, ga);
+}
+
+ga.listarTriagens();
+
 m.chamarProximaTriagem(ga);
+m.chamarProximaTriagem(ga);
+
+ga.listarTriagens();

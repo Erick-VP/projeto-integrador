@@ -1,31 +1,25 @@
 import { Paciente } from "../entities/patient";
+import { FilaPaciente } from "../queues/FilaPacientes";
 
 export class GerenciadorTriagem {
-    filaNormal: Paciente[] = [];
-    filaPrioritaria: Paciente[] = [];
-    filaAuxiliar: Paciente[] = [];
-    tentativasChamada = new Map<number, number>();
-    
-    public adicionarPaciente(paciente: Paciente): void {
-        if (paciente.temPrioridadeLegal()) {
-            this.filaPrioritaria.push(paciente);
+    private filaNormal = new FilaPaciente();
+    private filaPrioritaria = new FilaPaciente();
+
+    public adicionarPaciente(p: Paciente): void {
+        if (p.prioridadeLegal) {
+        this.filaPrioritaria.adicionar(p);
         } else {
-            this.filaNormal.push(paciente);
+        this.filaNormal.adicionar(p);
         }
     }
 
     public chamarProximoPaciente(): Paciente | null {
-        if (this.filaPrioritaria.length > 0) {
-            return this.filaPrioritaria.shift() || null;
-
-        } else if (this.filaAuxiliar.length > 0) {
-            return this.filaAuxiliar.shift() || null;
-
-        } else if (this.filaNormal.length > 0) {
-            return this.filaNormal.shift() || null;
+        if (!this.filaPrioritaria.estaVazia()) {
+            return this.filaPrioritaria.remover();
+        } else if (!this.filaNormal.estaVazia()) {
+            return this.filaNormal.remover();
         }
         return null;
-        // pode ser melhorado e precisa colocar contador
     }
 
     // public confirmarPresenca(paciente: Paciente): void {
@@ -38,15 +32,11 @@ export class GerenciadorTriagem {
 
 
     //listagem de pacientes
-    public listarFilaPrioritaria(): String[] {
-        return this.filaPrioritaria.map(p => `Paciente: ${p.nome}, CPF: ${p.cpf}`);
-    }
+public listarFilas(): void {
+    console.log("=== Fila Prioritária ===");
+    console.table(this.filaPrioritaria.listar());
 
-    public listarFilaNormal(): String[] {
-        return this.filaNormal.map(p => `Paciente: ${p.nome}, CPF: ${p.cpf}`);
-    }
-
-    public listarFilaAuxiliar(): String[] {
-        return this.filaAuxiliar.map(p => `Paciente: ${p.nome}, CPF: ${p.cpf}`);
+    console.log("=== Fila Normal ===");
+    console.table(this.filaNormal.listar());
     }
 }

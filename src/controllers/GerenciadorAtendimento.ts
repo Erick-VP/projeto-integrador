@@ -49,4 +49,11 @@ export class GerenciadorAtendimento {
         return this.filaSemTempo.remover()
     }
 }
+    public listarTriagens(): void {
+        console.log("=== Fila Sem Tempo ===");
+        console.table(this.filaSemTempo.listar());
+        
+        console.log("=== Fila Com Tempo ===");
+        console.table(this.filaComTempo.listar());
+    }
 }
