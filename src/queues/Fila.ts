@@ -1,8 +1,8 @@
 
-export interface Fila<T> {
-  adicionar(t: T): void;
-  remover(): T;
-  estaVazia(): boolean;
-  tamanho(): number;
-  listar(): T[];
+export interface Queue<T> {
+  add(t: T): void;
+  remove(): T;
+  isEmpty(): boolean;
+  size(): number;
+  list(): T[];
 }

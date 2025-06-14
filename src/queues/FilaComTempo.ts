@@ -1,33 +1,33 @@
-import { Fila } from "./Fila";
-import { Triagem } from "../entities/triage";
+import { Queue } from "./Fila";
+import { Triage } from "../entities/triage";
 
-export class FilaComTempo implements Fila<Triagem> {
-    fila: Triagem[] = [];
-    adicionar(t: Triagem): void {
-        if (this.fila.length == 0) {
-            this.fila.push(t)
+export class TimedQueue implements Queue<Triage> {
+    queue: Triage[] = [];
+    add(t: Triage): void {
+        if (this.queue.length == 0) {
+            this.queue.push(t)
             return
         }
         let pos = 0
-        for(let pacient of this.fila){
-            if(t.prioridade <= pacient.prioridade){
+        for(let patient of this.queue){
+            if(t.priority <= patient.priority){
             pos+=1
         }
         }
-        this.fila.splice(pos,0,t)
+        this.queue.splice(pos,0,t)
     }
-    remover(): Triagem {
-        const elementoCopia = this.fila[0]
-        this.fila.splice(0,1)
+    remove(): Triage {
+        const elementoCopia = this.queue[0]
+        this.queue.splice(0,1)
         return elementoCopia
     }
-    estaVazia(): boolean {
-        return this.fila.length === 0;
+    isEmpty(): boolean {
+        return this.queue.length === 0;
     }
-    tamanho(): number {
-        return this.fila.length;
+    size(): number {
+        return this.queue.length;
     }
-    listar(): Triagem[] {
-        return this.fila;
+    list(): Triage[] {
+        return this.queue;
     }
 }

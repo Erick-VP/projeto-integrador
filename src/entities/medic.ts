@@ -1,17 +1,17 @@
-import { GerenciadorAtendimento } from '../controllers/GerenciadorAtendimento';
-import { Funcionario } from './functionary';
+import { ServiceManager } from '../controllers/ServiceManager';
+import { Functionary } from './functionary';
 
-export class Medico extends Funcionario {
+export class Doctor extends Functionary {
     readonly crm: string;
     constructor(id: number, nome: string, crm: string) {
         super(id, nome);
         this.crm = crm;
     }
 
-    public chamarProximaTriagem(ga: GerenciadorAtendimento): void {
-        const triagem = ga.chamarProximaTriagem();
-        if (triagem) {
-            console.log(`Médico ${this.nome} está chamando o paciente ${triagem.paciente.nome} para atendimento.`);
+    public callNextTriage(ga: ServiceManager): void {
+        const triage = ga.callNextTriage();
+        if (triage) {
+            console.log(`Médico ${this.name} está chamando o paciente ${triage.patient.name} para atendimento.`);
         } else {
             console.log(`Não há triagens disponíveis para chamar.`);
         }

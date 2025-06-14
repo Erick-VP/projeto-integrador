@@ -1,17 +1,17 @@
-export class Paciente {
+export class Patient {
     public readonly id: number;
-    public readonly nome: string;
+    public readonly name: string;
     public readonly cpf: string;
-    public readonly prioridadeLegal: boolean;
-    public readonly casoEmergencial: boolean;
-    constructor(id: number, nome: string, cpf: string, prioridadeLegal: boolean, casoEmergencial: boolean) {
+    public readonly legalPriority: boolean;
+    public readonly emergencyCase: boolean;
+    constructor(id: number, name: string, cpf: string, legalPriority: boolean, emergencyCase: boolean) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
         this.cpf = cpf;
-        this.prioridadeLegal = prioridadeLegal;
-        this.casoEmergencial = casoEmergencial;
+        this.legalPriority = legalPriority;
+        this.emergencyCase = emergencyCase;
     }
-    public temPrioridadeLegal(): boolean {
-        return this.prioridadeLegal;
+    public hasLegalPriority(): boolean {
+        return this.legalPriority;
     }
 }

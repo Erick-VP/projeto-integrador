@@ -1,36 +1,36 @@
-import { Prioridade } from "../priorities/priority";
-import { Funcionario } from "./functionary";
-import { Triagem } from "./triage";
-import { Paciente } from "./patient";
-import { GerenciadorTriagem } from "../controllers/GerenciadorTriagem";
-import { GerenciadorAtendimento } from "../controllers/GerenciadorAtendimento";
+import { Priority } from "../priorities/priority";
+import { Functionary } from "./functionary";
+import { Triage } from "./triage";
+import { Patient } from "./patient";
+import { TriageManager } from "../controllers/TriageManager";
+import { ServiceManager } from "../controllers/ServiceManager";
 
-export class Enfermeiro extends Funcionario {
+export class Nurse extends Functionary {
     readonly coren: string;
-    constructor(id: number, nome: string, coren: string) {
-        super(id, nome);
+    constructor(id: number, name: string, coren: string) {
+        super(id, name);
         this.coren = coren;
     }
 
-    public chamarProximoPaciente(gt: GerenciadorTriagem): Paciente | null {
-        const paciente = gt.chamarProximoPaciente();
-        if (paciente) {
-            console.log(`Chamando paciente: ${paciente.nome}`);
-            return paciente;
+    public callNextPatient(gt: TriageManager): Patient | null {
+        const patient = gt.callNextPatient();
+        if (patient) {
+            console.log(`Chamando paciente: ${patient.name}`);
+            return patient;
         } else {
             console.log("Nenhum paciente na fila.");
             return null;
         }
     }
 
-    public realizarTriagem(paciente: Paciente, prioridade: Prioridade, pressao: number, saturacao: number, peso: number, temperatura: number): Triagem {
-        console.log(`Enfermeiro: Realizando triagem de ${paciente.nome}`);
-        return new Triagem(paciente, prioridade, {pressao, saturacao, peso, temperatura});
+    public realizeTriage(patient: Patient, priority: Priority, pressure: number, saturation: number, weight: number, temperature: number, symptoms: string[]): Triage {
+        console.log(`Enfermeiro: Realizando triagem de ${patient.name}`);
+        return new Triage(patient, priority, pressure, saturation, weight, temperature, symptoms);
     }
 
-    public encaminharParaAtendimento(triagem: Triagem, ga: GerenciadorAtendimento): void {
-    ga.adicionarTriagem(triagem);
-    console.log(`Enfermeiro: Triagem de ${triagem.paciente.nome} enviada para atendimento.`);
+    public forwardToService(triagem: Triage, ga: ServiceManager): void {
+    ga.addTriage(triagem);
+    console.log(`Enfermeiro: Triagem de ${triagem.patient.name} enviada para atendimento.`);
     }
 
 

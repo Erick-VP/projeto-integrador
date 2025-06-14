@@ -1,34 +1,29 @@
-import { GerenciadorAtendimento } from '../controllers/GerenciadorAtendimento';
-import { GerenciadorTriagem } from '../controllers/GerenciadorTriagem';
-import { Prioridade } from '../priorities/priority';
-import { Funcionario } from './functionary';
-import { Paciente } from './patient';
-import { Triagem } from './triage';
+import { ServiceManager } from '../controllers/ServiceManager';
+import { TriageManager } from '../controllers/TriageManager';
+import { Priority } from '../priorities/priority';
+import { Functionary } from './functionary';
+import { Patient } from './patient';
+import { Triage } from './triage';
 
-export class Recepcionista extends Funcionario {
-    public readonly matricula: string;
-    constructor(id: number, nome: string, matricula: string) {
-        super(id, nome);
-        this.matricula = matricula;
+export class Receptionist extends Functionary {
+    public readonly registration: string;
+    constructor(id: number, name: string, registration: string) {
+        super(id, name);
+        this.registration = registration;
     }
-    public cadastrarPaciente(paciente: Paciente): void {
+    public registerPatient(patient: Patient): void {
         // Lógica para cadastrar paciente
-        console.log(`Paciente ${paciente.nome} cadastrado com sucesso!`);
+        console.log(`Paciente ${patient.name} cadastrado com sucesso!`);
     }
-    
-    public encaminhar(p: Paciente, gt: GerenciadorTriagem, ga: GerenciadorAtendimento): void {
-        if (p.casoEmergencial) {
-            const tri = new Triagem(p, Prioridade.Vermelho, {
-                pressao: 0,
-                saturacao: 0,
-                peso: 0,
-                temperatura: 0
-            });
-            ga.adicionarTriagem(tri); //adiciona para atendimento
-            console.log(`Paciente ${p.nome} encaminhado para atendimento emergencial.`);
+
+    public forwardToTriage(p: Patient, gt: TriageManager, ga: ServiceManager): void {
+        if (p.emergencyCase) {
+            const tri = new Triage(p, Priority.Vermelho, 0, 0, 0, 0, []); // Cria uma triagem de emergência
+            ga.addTriage(tri); //adiciona para atendimento
+            console.log(`Paciente ${p.name} encaminhado para atendimento emergencial.`);
         }else {
-        gt.adicionarPaciente(p); //adicioana para triagem
-        console.log(`Paciente ${p.nome} encaminhado para triagem.`);
+        gt.addPatient(p); //adicioana para triagem
+        console.log(`Paciente ${p.name} encaminhado para triagem.`);
         }
     }
 }

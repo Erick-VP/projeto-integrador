@@ -1,4 +1,4 @@
-export enum Prioridade {
+export enum Priority {
     "Azul" = 1,
     "Verde" = 2,
     "Amarelo" = 3,

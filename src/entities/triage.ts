@@ -1,17 +1,16 @@
-import { Prioridade } from "../priorities/priority";
-import { Paciente } from "./patient";
+import { Priority } from "../priorities/priority";
+import { Patient } from "./patient";
 
-export class Triagem {
+export class Triage {
     public readonly dataHora = Date.now()
     constructor(
-        public readonly paciente: Paciente,
-        public readonly prioridade: Prioridade,
-        public readonly detalhes: {
-        pressao: number;
-        saturacao: number;
-        peso: number;
-        temperatura: number;
-        },
+        public readonly patient: Patient,
+        public readonly priority: Priority,
+        public readonly pressure: number,
+        public readonly saturation: number,
+        public readonly weight: number,
+        public readonly temperature: number,
+        public readonly symptoms: string[],
     ) {
     }
 }

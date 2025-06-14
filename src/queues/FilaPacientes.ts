@@ -1,26 +1,26 @@
-import { Paciente } from "../entities/patient";
-import { Fila } from "./Fila";
+import { Patient } from "../entities/patient";
+import { Queue } from "./Fila";
 
-export class FilaPaciente implements Fila<Paciente> {
-    fila: Paciente[] = [];
+export class PatientQueue implements Queue<Patient> {
+    queue: Patient[] = [];
 
-    adicionar(p: Paciente): void {
-        this.fila.push(p); // Sem prioridade numérica, ordem de chegada
+    add(p: Patient): void {
+        this.queue.push(p); // Sem prioridade numérica, ordem de chegada
     }
 
-    remover(): Paciente {
-        return this.fila.shift()!;
+    remove(): Patient {
+        return this.queue.shift()!;
     }
 
-    estaVazia(): boolean {
-        return this.fila.length === 0;
+    isEmpty(): boolean {
+        return this.queue.length === 0;
     }
 
-    tamanho(): number {
-        return this.fila.length;
+    size(): number {
+        return this.queue.length;
     }
 
-    listar(): Paciente[] {
-        return this.fila;
+    list(): Patient[] {
+        return this.queue;
     }
 }
