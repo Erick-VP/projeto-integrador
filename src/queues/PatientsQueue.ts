@@ -1,5 +1,5 @@
 import { Patient } from "../entities/patient";
-import { Queue } from "./Fila";
+import { Queue } from "./Queue";
 
 export class PatientQueue implements Queue<Patient> {
     queue: Patient[] = [];

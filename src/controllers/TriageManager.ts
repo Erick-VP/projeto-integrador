@@ -1,5 +1,5 @@
 import { Patient } from "../entities/patient";
-import { PatientQueue } from "../queues/FilaPacientes";
+import { PatientQueue } from "../queues/PatientsQueue";
 
 export class TriageManager {
     private normalQueue = new PatientQueue();

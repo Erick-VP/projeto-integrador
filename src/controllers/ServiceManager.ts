@@ -1,7 +1,7 @@
 import { Triage } from "../entities/triage";
 import { Priority } from "../priorities/priority";
-import { TimedQueue } from "../queues/FilaComTempo";
-import { UntimedQueue } from "../queues/FilaSemtempo";
+import { TimedQueue } from "../queues/TimedQueue";
+import { UntimedQueue } from "../queues/UntimedQueue";
 
 export class ServiceManager {
     private timedQueue = new TimedQueue();

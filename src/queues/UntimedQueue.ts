@@ -1,7 +1,7 @@
-import { Queue } from "./Fila";
 import { Triage } from "../entities/triage";
+import { Queue } from "./Queue";
 
-export class TimedQueue implements Queue<Triage> {
+export class UntimedQueue implements Queue<Triage> {
     queue: Triage[] = [];
     add(t: Triage): void {
         if (this.queue.length == 0) {
@@ -17,9 +17,9 @@ export class TimedQueue implements Queue<Triage> {
         this.queue.splice(pos,0,t)
     }
     remove(): Triage {
-        const elementoCopia = this.queue[0]
+        const elemRetirado = this.queue[0]
         this.queue.splice(0,1)
-        return elementoCopia
+        return elemRetirado
     }
     isEmpty(): boolean {
         return this.queue.length === 0;
