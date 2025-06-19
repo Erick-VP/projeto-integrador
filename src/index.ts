@@ -6,6 +6,9 @@ import { Nurse } from "./entities/nurse";
 import { Doctor } from "./entities/medic";
 import { Triage } from "./entities/triage";
 import { Priority } from "./priorities/priority";
+import Database from 'better-sqlite3'
+
+const db = new Database('hospital_queue.db')
 
 const gt = new TriageManager();
 const ga = new ServiceManager();
